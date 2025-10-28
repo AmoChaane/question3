@@ -7,7 +7,6 @@
     android:padding="16dp"
     tools:context=".ui.restaurant.RestaurantFragment">
 
-    <!-- Restaurant Title -->
     <TextView
         android:id="@+id/title_restaurant"
         android:layout_width="match_parent"
@@ -22,7 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Restaurant Name Label -->
     <TextView
         android:id="@+id/label_restaurant_name"
         android:layout_width="wrap_content"
@@ -34,7 +32,6 @@
         app:layout_constraintTop_toBottomOf="@id/title_restaurant"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Restaurant Name -->
     <TextView
         android:id="@+id/restaurant_name"
         android:layout_width="0dp"
@@ -48,7 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Restaurant Address Label -->
     <TextView
         android:id="@+id/label_restaurant_address"
         android:layout_width="wrap_content"
@@ -60,7 +56,6 @@
         app:layout_constraintTop_toBottomOf="@id/restaurant_name"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Restaurant Address -->
     <TextView
         android:id="@+id/restaurant_address"
         android:layout_width="0dp"
@@ -74,7 +69,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Current Dish Rating Info -->
     <TextView
         android:id="@+id/label_current_rating"
         android:layout_width="wrap_content"

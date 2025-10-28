@@ -15,8 +15,8 @@ public class SharedViewModel extends ViewModel {
     
     public SharedViewModel() {
         // Initialize with default restaurant data
-        restaurantName.setValue("La Bella Vista");
-        restaurantAddress.setValue("123 Main Street, Downtown, City 12345");
+        restaurantName.setValue("Amo's Restaurant");
+        restaurantAddress.setValue("815 Helen Joseph Street, Pretoria CBD");
     }
     
     // Dish name methods

@@ -2,15 +2,5 @@
     <string name="app_name">RestaurantRaterApp</string>
     <string name="title_restaurant">Restaurant</string>
     <string name="title_dishrating">Rate Dish</string>
-    
-    <!-- Dish types for spinner -->
-    <string-array name="dish_types">
-        <item>Select dish type</item>
-        <item>Appetizer</item>
-        <item>Entrée</item>
-        <item>Main Course</item>
-        <item>Side Dish</item>
-        <item>Dessert</item>
-        <item>Beverage</item>
-    </string-array>
+
 </resources>
