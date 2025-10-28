@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.question3.databinding.FragmentHomeBinding;
+import com.example.question3.databinding.FragmentRestaurantBinding;
 
 public class RestaurantFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentRestaurantBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         RestaurantViewModel restaurantViewModel =
                 new ViewModelProvider(this).get(RestaurantViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentRestaurantBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
+        final TextView textView = binding.textRestaurant;
         restaurantViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
