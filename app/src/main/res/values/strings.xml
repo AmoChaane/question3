@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">question3</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_restaurant">Restaurant</string>
+    <string name="title_dishrating">Dish Rating</string>
+</resources>
