@@ -1,20 +1,28 @@
 package com.example.question3;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.question3.databinding.ActivityMainBinding;
+import com.example.question3.ui.restaurant.RestaurantFragment;
+import com.example.question3.ui.dishrating.DishRatingFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private SharedViewModel sharedViewModel;
+    private FragmentManager fragmentManager;
+    private RestaurantFragment restaurantFragment;
+    private DishRatingFragment dishRatingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +31,50 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Initialize shared ViewModel
+        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+        
+        // Initialize FragmentManager
+        fragmentManager = getSupportFragmentManager();
+        
+        // Initialize fragments
+        restaurantFragment = new RestaurantFragment();
+        dishRatingFragment = new DishRatingFragment();
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_restaurant, R.id.navigation_dishrating)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        
+        // Set up bottom navigation listener
+        navView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                
+                if (item.getItemId() == R.id.navigation_restaurant) {
+                    selectedFragment = restaurantFragment;
+                } else if (item.getItemId() == R.id.navigation_dishrating) {
+                    selectedFragment = dishRatingFragment;
+                }
+                
+                if (selectedFragment != null) {
+                    switchFragment(selectedFragment);
+                    return true;
+                }
+                
+                return false;
+            }
+        });
+        
+        // Load the default fragment (Restaurant)
+        if (savedInstanceState == null) {
+            switchFragment(restaurantFragment);
+            navView.setSelectedItemId(R.id.navigation_restaurant);
+        }
+    }
+    
+    private void switchFragment(Fragment fragment) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
     }
 
 }

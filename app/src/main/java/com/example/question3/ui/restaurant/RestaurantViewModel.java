@@ -6,14 +6,28 @@ import androidx.lifecycle.ViewModel;
 
 public class RestaurantViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private final MutableLiveData<String> restaurantName = new MutableLiveData<>();
+    private final MutableLiveData<String> restaurantAddress = new MutableLiveData<>();
 
     public RestaurantViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        // Set default restaurant information
+        restaurantName.setValue("La Bella Vista");
+        restaurantAddress.setValue("123 Main Street, Downtown, City 12345");
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<String> getRestaurantName() {
+        return restaurantName;
+    }
+    
+    public LiveData<String> getRestaurantAddress() {
+        return restaurantAddress;
+    }
+    
+    public void setRestaurantName(String name) {
+        restaurantName.setValue(name);
+    }
+    
+    public void setRestaurantAddress(String address) {
+        restaurantAddress.setValue(address);
     }
 }
